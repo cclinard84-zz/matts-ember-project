@@ -1,4 +1,6 @@
-import { test } from 'qunit';
+import {
+  test
+} from 'qunit';
 import moduleForAcceptance from 'matts-ember-project/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | list rentals');
@@ -32,5 +34,12 @@ test('should navigate from about to rentals', function(assert){
   click('a:contains("Super Rentals")');
   andThen(function(){
     assert.equal(currentURL(), '/rentals', 'should navigate to rentals');
+  });
+});
+
+test('should list the available rentals', function(assert){
+  visit('/');
+  andThen(function(){
+    assert.equal(find('.listing').length, 3, 'should see 3 listings');
   });
 });
